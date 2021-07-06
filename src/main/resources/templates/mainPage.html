@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AteIt😋</title>
+</head>
+<body>
+<table style="border: 1px solid #444444; border-collapse: collapse">
+    <thead>
+    <tr>
+        <th style="border: 1.5px solid black; text-align:center; padding:10px">NAME</th>
+        <th style="border: 1.5px solid black; text-align:center; padding:10px">CALORIE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="diet : ${dietList}">
+        <td style="border: 1.5px solid black; text-align:center; padding:10px" th:text="${diet.name}"></td>
+        <td style="border: 1.5px solid black; text-align:center; padding:10px" th:text="${diet.calorie}"></td>
+    </tr>
+    </tbody>
+</table>
+<h2 th:text="${calTotal}"></h2>
+<p>
+    <a href="/diet/register">식단 등록</a>
+</p>
+</body>
+</html>
