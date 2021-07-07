@@ -20,9 +20,9 @@
     </tr>
     </tbody>
 </table>
-<h2 th:text="${calTotal}"></h2>
+<h2 th:text="|${calTotal} kcal|"></h2>
 <p>
-    <a href="/diet/register">식단 등록</a>
+    <button type="button" onclick="location.href = '/diet/register' ">식단 등록</button>
 </p>
 </body>
 </html>
