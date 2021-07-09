@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AteIt😋</title>
+</head>
+<body>
+<form th:attr="action = |/diet/edit/${diet.id}|" method="GET">
+    <label for="name">이름</label>
+    <input type="text" id="name" name="name" th:attr="value = ${diet.name}">
+    <br>
+    <label for="calorie">칼로리</label>
+    <input type="text" id="calorie" name="calorie" th:attr="value = ${diet.calorie}">
+    <br>
+    <button type="submit">수정하기</button>
+</form>
+</body>
+</html>

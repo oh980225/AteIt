@@ -27,4 +27,9 @@ public class Diet {
         this.calorie = calorie;
         this.today = today;
     }
+
+    public void setNameAndCalorie(String name, Integer calorie) {
+        this.name = name;
+        this.calorie = calorie;
+    }
 }

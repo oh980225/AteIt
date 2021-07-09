@@ -5,10 +5,7 @@ import com.example.ateIt.service.DietService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,4 +47,17 @@ public class DietController {
         return "mainPage";
     }
 
+    @GetMapping("/diet/edit/form/{id}")
+    public String getEditForm(@PathVariable("id") Long id, Model model) {
+        Diet diet = dietService.findDietById(id);
+        model.addAttribute("diet", diet);
+
+        return "editForm";
+    }
+
+    @GetMapping("/diet/edit/{id}")
+    public String editDiet(@PathVariable("id") Long id, DietForm dietForm) {
+        dietService.editMyDiet(id, dietForm);
+        return "redirect:/diet";
+    }
 }

@@ -46,4 +46,13 @@ public class DietService {
     public void deleteMyDiet(Long id) {
         dietRepository.deleteById(id);
     }
+
+    public void editMyDiet(Long id, DietForm dietForm) {
+        Diet diet = dietRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 diet가 존재하지 않습니다."));
+        diet.setNameAndCalorie(dietForm.getName(), dietForm.getCalorie());
+    }
+
+    public Diet findDietById(Long id) {
+        return dietRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 diet가 존재하지 않습니다."));
+    }
 }

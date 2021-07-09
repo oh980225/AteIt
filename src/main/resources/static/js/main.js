@@ -1,4 +1,5 @@
 const deleteBtn = document.getElementsByClassName("deleteBtn");
+const editBtn = document.getElementsByClassName("editBtn");
 
 function deleteDiet(id) {
     const url = "http://localhost:8080/diet/delete/" + id;
@@ -7,6 +8,17 @@ function deleteDiet(id) {
         type: "DELETE",
         success: () => {
             window.location.reload();
+        }
+    });
+}
+
+function getEditDietForm(id) {
+    const url = "http://localhost:8080/diet/edit/form/" + id;
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: () => {
+            console.log("good");
         }
     });
 }
@@ -23,3 +35,11 @@ for (const btn of deleteBtn) {
         }
     });
 }
+
+/*for (const btn of editBtn) {
+    btn.addEventListener("click", () => {
+        const id =  btn.parentNode.id;
+        getEditDietForm(id);
+        console.log("삭제한다고 합니다~");
+    });
+}*/
