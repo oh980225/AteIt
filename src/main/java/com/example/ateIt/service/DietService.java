@@ -42,4 +42,8 @@ public class DietService {
         }
         return total;
     }
+
+    public void deleteMyDiet(Long id) {
+        dietRepository.deleteById(id);
+    }
 }

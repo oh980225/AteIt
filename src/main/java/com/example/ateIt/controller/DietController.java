@@ -5,7 +5,9 @@ import com.example.ateIt.service.DietService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -41,4 +43,11 @@ public class DietController {
 
         return "redirect:/diet";
     }
+
+    @DeleteMapping("/diet/delete/{id}")
+    public String deleteDiet(@PathVariable("id") Long id) {
+        dietService.deleteMyDiet(id);
+        return "mainPage";
+    }
+
 }

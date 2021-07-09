@@ -4,25 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <title>AteIt😋</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-<table style="border: 1px solid #444444; border-collapse: collapse">
+<table>
     <thead>
     <tr>
-        <th style="border: 1.5px solid black; text-align:center; padding:10px">NAME</th>
-        <th style="border: 1.5px solid black; text-align:center; padding:10px">CALORIE</th>
+        <th class="table_box">NAME</th>
+        <th class="table_box">CALORIE (kcal)</th>
+        <th class="table_box">DELETE?</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="diet : ${dietList}">
-        <td style="border: 1.5px solid black; text-align:center; padding:10px" th:text="${diet.name}"></td>
-        <td style="border: 1.5px solid black; text-align:center; padding:10px" th:text="${diet.calorie}"></td>
+    <tr th:attr="id = ${diet.id}" th:each="diet : ${dietList}">
+        <td class="table_box" th:text="${diet.name}"></td>
+        <td class="table_box" th:text="${diet.calorie}"></td>
+        <td class="table_box deleteBtn"><button>❌</button></td>
     </tr>
     </tbody>
 </table>
-<h2 th:text="|${calTotal} kcal|"></h2>
-<p>
-    <button type="button" onclick="location.href = '/diet/register' ">식단 등록</button>
+<h2 class="total" th:text="|${calTotal} kcal|"></h2>
+<p class="myButtons">
+    <button class="button" type="button" onclick="location.href = '/diet/register'">식단 등록</button>
+    <button class="button" type="button" >기록 조회</button>
 </p>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/main.js"></script>
 </html>
