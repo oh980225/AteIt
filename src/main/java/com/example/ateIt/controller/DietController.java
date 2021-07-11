@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -29,6 +31,26 @@ public class DietController {
         return "mainPage";
     }
 
+    @GetMapping("/diet/select")
+    public String getSelectDate(DateForm dateForm, Model model) {
+        List<Diet> dietList = null;
+        System.out.println(dateForm.getDate());
+        if(dateForm.getDate() == null) {
+            model.addAttribute("date", LocalDate.now());
+            dietList = dietService.findDietByDate(LocalDate.now());
+        } else {
+            model.addAttribute("date", dateForm.getDate());
+            dietList = dietService.findDietByDate(LocalDate.parse(dateForm.getDate(), DateTimeFormatter.ISO_DATE));
+        }
+
+        int totalCalorie = dietService.getTodayTotalCalorie(dietList);
+
+        model.addAttribute("dietList", dietList);
+        model.addAttribute("calTotal", totalCalorie);
+
+        return "selectDate";
+    }
+
     @GetMapping("/diet/register")
     public String getRegisterForm() {
         return "dietForm";
@@ -39,12 +61,6 @@ public class DietController {
         dietService.registerMyDiet(dietForm);
 
         return "redirect:/diet";
-    }
-
-    @DeleteMapping("/diet/delete/{id}")
-    public String deleteDiet(@PathVariable("id") Long id) {
-        dietService.deleteMyDiet(id);
-        return "mainPage";
     }
 
     @GetMapping("/diet/edit/form/{id}")
@@ -59,5 +75,11 @@ public class DietController {
     public String editDiet(@PathVariable("id") Long id, DietForm dietForm) {
         dietService.editMyDiet(id, dietForm);
         return "redirect:/diet";
+    }
+
+    @DeleteMapping("/diet/delete/{id}")
+    public String deleteDiet(@PathVariable("id") Long id) {
+        dietService.deleteMyDiet(id);
+        return "mainPage";
     }
 }

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>AteIt😋</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
+<button class="homeBtn" type="button" onclick="location.href = '/diet'">HOME 🏠</button>
+
 <form th:attr="action = |/diet/edit/${diet.id}|" method="GET">
     <label for="name">이름</label>
     <input type="text" id="name" name="name" th:attr="value = ${diet.name}">

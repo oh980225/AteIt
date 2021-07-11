@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>AteIt😋</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<button class="homeBtn" type="button" onclick="location.href = '/diet'">HOME 🏠</button>
+
+<form method="GET" action="/diet/select">
+    <p><input name="date" type="date" th:value="${date}"></p>
+    <p><input type="submit" value="조회하기"></p>
+</form>
+<div th:if="${dietList.size() != 0}">
+    <table>
+        <thead>
+        <tr>
+            <th class="table_box">NAME</th>
+            <th class="table_box">CALORIE (kcal)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:attr="id = ${diet.id}" th:each="diet : ${dietList}">
+            <td class="table_box" th:text="${diet.name}"></td>
+            <td class="table_box" th:text="${diet.calorie}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <h2 class="total" th:text="|${calTotal} kcal|"></h2>
+</div>
+<div th:if="${dietList.size() == 0}">
+    <h2 style="text-align: center">결과가 없습니다.</h2>
+</div>
+</body>
+</html>

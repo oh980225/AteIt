@@ -29,7 +29,22 @@ table {
     background: transparent;
 }
 
+.homeBtn {
+    font-size: 15px;
+    margin: 10px;
+    margin-bottom: 20px;
+    border-radius: 10%;
+    border: 2px solid black;
+    background: transparent;
+}
+
 .button:hover {
+    background: #EAFCFF;
+    transform: scale(1.03);
+    transition-delay: 0.1s;
+    cursor: pointer;
+}
+.homeBtn:hover{
     background: #EAFCFF;
     transform: scale(1.03);
     transition-delay: 0.1s;

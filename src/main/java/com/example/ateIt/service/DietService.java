@@ -1,5 +1,6 @@
 package com.example.ateIt.service;
 
+import com.example.ateIt.controller.DateForm;
 import com.example.ateIt.controller.DietForm;
 import com.example.ateIt.domain.Diet;
 import com.example.ateIt.repository.DietRepository;
@@ -54,5 +55,9 @@ public class DietService {
 
     public Diet findDietById(Long id) {
         return dietRepository.findById(id).orElseThrow(() -> new RuntimeException("해당 diet가 존재하지 않습니다."));
+    }
+
+    public List<Diet> findDietByDate(LocalDate date) {
+        return dietRepository.findByToday(date);
     }
 }

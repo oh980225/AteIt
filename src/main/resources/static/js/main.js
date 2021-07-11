@@ -35,11 +35,3 @@ for (const btn of deleteBtn) {
         }
     });
 }
-
-/*for (const btn of editBtn) {
-    btn.addEventListener("click", () => {
-        const id =  btn.parentNode.id;
-        getEditDietForm(id);
-        console.log("삭제한다고 합니다~");
-    });
-}*/
