@@ -15,4 +15,4 @@
 
 ## DB 설계
 
-[]
+![image](https://user-images.githubusercontent.com/33858991/125245988-3019de80-e32c-11eb-9e2e-83c8921c1c5b.png)
