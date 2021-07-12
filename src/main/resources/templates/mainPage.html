@@ -21,7 +21,7 @@
         <td class="table_box" th:text="${diet.name}"></td>
         <td class="table_box" th:text="${diet.calorie}"></td>
         <td class="table_box deleteBtn"><button>❌</button></td>
-        <td class="table_box editBtn" th:attr="onclick = |location.href = '/diet/edit/form/${diet.id}'|"><button>🖋</button></td>
+        <td class="table_box" th:attr="onclick = |location.href = '/diet/edit/form/${diet.id}'|"><button>🖋</button></td>
     </tr>
     </tbody>
 </table>

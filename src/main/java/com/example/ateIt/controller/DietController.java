@@ -34,7 +34,7 @@ public class DietController {
     @GetMapping("/diet/select")
     public String getSelectDate(DateForm dateForm, Model model) {
         List<Diet> dietList = null;
-        System.out.println(dateForm.getDate());
+
         if(dateForm.getDate() == null) {
             model.addAttribute("date", LocalDate.now());
             dietList = dietService.findDietByDate(LocalDate.now());
@@ -77,9 +77,9 @@ public class DietController {
         return "redirect:/diet";
     }
 
-    @DeleteMapping("/diet/delete/{id}")
+    @GetMapping("/diet/delete/{id}")
     public String deleteDiet(@PathVariable("id") Long id) {
         dietService.deleteMyDiet(id);
-        return "mainPage";
+        return "redirect:/diet";
     }
 }
